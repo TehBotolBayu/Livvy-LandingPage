@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="text-4xl">Bingung Mulai dari mana?</div>
         <a 
-        href="forms.gle/fMMdSXCAFszkUQnP8"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdy6nC-pO3qkT4qVr-xnQo2SRtQIpEyqdlWRiZrYtV1cAygFw/viewform"
         className="
         border 
         border-s-gray-50 
