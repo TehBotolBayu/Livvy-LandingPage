@@ -11,15 +11,15 @@ const content = {
     intro_step: "Bagaimana Memulai livvy?",
     step: [
         {
-            img: "src/assets/survei.png",
+            img: "./assets/survei.png",
             txt:"Isi Survei"
         },
         {
-            img: "src/assets/pilih.png",
+            img: "./assets/pilih.png",
             txt:"Pilih Paket KPR"
         },
         {
-            img: "src/assets/menabung.png",
+            img: "./assets/menabung.png",
             txt:"Mulai Menabung"
         } 
     ]
