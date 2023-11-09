@@ -13,7 +13,7 @@ const HeadNav = () => {
 const Header = () => {
   return (
     <div className="bg-gray-50 flex flex-row justify-between fixed top-0 w-screen px-5 items-center">
-        <img src={Logo} width={'100px'}/>
+        <img src={Logo} width={'200px'}/>
         <HeadNav />
     </div>
   )
