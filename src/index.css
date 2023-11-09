@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .headnav{
+    @apply hover:font-bold mx-2 transition-all ease-linear cursor-pointer
+  }
+  .hero {
+    @apply bg-secondary h-screen border flex items-center px-10
+  }
+  .hero-text{
+    @apply font-semibold text-gray-50 max-w-screen-xl 
+  }
+  .hero-image{
+    @apply hidden max-w-screen-md min-w-[300px] ml-5 md:block 
+  }
+  .body-content{
+    @apply flex justify-evenly px-16 h-screen items-center 
+    md:mb-0 md:flex-row flex-col 
+  }
+  .footer{
+    @apply h-screen bg-secondary flex items-center justify-evenly flex-col md:flex-row
+  }
+  .footer-content{
+    @apply text-gray-50 flex flex-col items-center w-full text-3xl
+    
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
