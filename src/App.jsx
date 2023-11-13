@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Body from './components/Body'
-import Footer from './components/Footer'
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import Home from './pages/Home'
+import Kalkulator from './pages/Kalkulator'
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Hero />
-      <Body />
-      <Footer />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home/>} />
+        <Route path='/kalkulator' element={<Kalkulator/>} />
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import mockup from '../assets/mockup.png'
 
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="footer-content">
         <div className="text-4xl">Bingung Mulai dari mana?</div>
         <a 
-        href="https://docs.google.com/forms/d/e/1FAIpQLSdy6nC-pO3qkT4qVr-xnQo2SRtQIpEyqdlWRiZrYtV1cAygFw/viewform"
+        href="forms.gle/fMMdSXCAFszkUQnP8"
         className="
         border 
         border-s-gray-50 
@@ -21,6 +22,7 @@ const Footer = () => {
           </a>
       </div>
       <div className="footer-content">
+          <div><img src={mockup} className="max-h-[500px]"/></div>
           <div className="mb-5">Tunggu kehadiran kami di</div>
           <div><img src={'https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg'}/></div>
       </div>
