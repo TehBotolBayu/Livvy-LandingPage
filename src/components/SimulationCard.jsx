@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
-
 const SimulationCard = () => {
-  const [harga, setHarga] = useState(0);
-  const [DP, setDP] = useState(0);
-  const [tahun, setTahun] = useState(0);
-  const [bunga, setBunga] = useState(0);
-  const [bulan, setBulan] = useState(0);
-  const [angsur, setAngsur] = useState(0);
+  const [harga, setHarga] = useState(0),
+       [DP, setDP] = useState(0),
+       [tahun, setTahun] = useState(0),
+       [bunga, setBunga] = useState(0),
+       [bulan, setBulan] = useState(0),
+       [angsur, setAngsur] = useState(0),
+       [total, setTotal] = useState(0);
+
+  
 
   const hitungDP = (val) => {
     setDP(harga*val/100);
@@ -21,19 +23,23 @@ const SimulationCard = () => {
   const hitung = () => {
     let pokok = (harga - DP);
     let angsuran = (pokok * bunga/100 * tahun);
-    setAngsur((angsuran/bulan) + (pokok/bulan))
+    setAngsur(parseInt((angsuran/bulan) + (pokok/bulan)));
   }
 
+  useEffect(() => {
+    setTotal(angsur*bulan);
+  }, [angsur])
+  
   return (
     <>
     <div className="bg-gray-50 min-h-screen p-4">
-      <div className="p-4 md:text-center w-96 mt-20  md:w-full m-auto">
+      <div className="p-4 md:text-center max-w-96 mt-20  md:w-full m-auto">
         <h1 className="font-bold text-2xl text-primary">Simulasi KPR</h1>
         <p>Cek simulasi kredit rumah dengan kalkulator KPR Livvy</p>
       </div>
       <div className="flex flex-col items-center justify-center mt-2 
-      md:flex-row md:items-start">
-        <div className="card w-96 mt-2 md:mr-2">
+      md:flex-row md:items-start ">
+        <div className="card  mt-2 md:mr-2 max-w-sm">
           <div className="form-container ">
             <div className="form-input">
               <label htmlFor="harga">Harga Properti</label>
@@ -70,7 +76,7 @@ const SimulationCard = () => {
             </button>
           </div>
         </div>
-        <div className="card w-96 mt-2">
+        <div className="card  mt-2 w-full max-w-sm">
           <div className="result-container">
             <div className="text-center text-lg p-2 rounded-md bg-green-100 my-2">
               Angsuran per bulan:<br></br>
@@ -88,20 +94,20 @@ const SimulationCard = () => {
             <h2 className="font-bold my-3 border-b-2 border-gray-200">Detail Pinjaman</h2>
             <div className="data">
               <p className="detail">Pinjaman pokok</p>
-              <p className="value">Rp {}</p>
+              <p className="value">Rp {harga-DP}</p>
             </div>
             <div className="data">
               <p className="detail">Total margin pinjaman</p>
-              <p className="value">Rp {}</p>
+              <p className="value">Rp {total}</p>
             </div>
             <h2 className="font-bold my-3 border-b-2 border-gray-200">Ketentuan Penghasilan Minimal</h2>
             <div className="data">
               <p className="detail">Angsuran 30% penghasilan</p>
-              <p className="value">Rp {}</p>
+              <p className="value">Rp {parseInt(angsur*3 + (angsur / 3))}</p>
             </div>
             <div className="data">
               <p className="detail">Angsuran 40% penghasilan</p>
-              <p className="value">Rp {}</p>
+              <p className="value">Rp {parseInt(angsur*2 + (angsur / 2))}</p>
             </div>
           </div>
         </div>

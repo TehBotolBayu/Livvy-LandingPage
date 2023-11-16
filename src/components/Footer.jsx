@@ -9,12 +9,13 @@ const Footer = () => {
         <a 
         href="forms.gle/fMMdSXCAFszkUQnP8"
         className="
+        max-w-[18rem]
         border 
         border-s-gray-50 
         rounded-[100px] 
         p-2 
-      bg-gray-50 
-      text-secondary 
+        bg-gray-50 
+        text-secondary 
         px-10
         mt-10
         ">

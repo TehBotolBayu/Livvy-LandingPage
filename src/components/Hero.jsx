@@ -13,13 +13,15 @@ const Hero = () => {
         {content.hero_text.sub}
         </p>
         <button className="
+        max-w-[18rem]
         border 
         border-s-gray-50 
         rounded-[100px] 
         p-2 
         bg-gray-50 
         text-secondary 
-        px-10" onClick={() => document.location.href = "#panduan"}>
+        px-10
+        text-xl" onClick={() => document.location.href = "#panduan"}>
           Mulai Sekarang ↓
         </button>
       </div>
