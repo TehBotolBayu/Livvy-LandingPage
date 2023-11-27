@@ -9,7 +9,7 @@ const Hero = () => {
         <h1 className="text-5xl mb-5">
         {content.hero_text.title}
         </h1>
-        <p className="text-xl mb-5">
+        <p className="text-2xl mb-5 ">
         {content.hero_text.sub}
         </p>
         <button className="

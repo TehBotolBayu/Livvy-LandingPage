@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 const SimulationCard = () => {
+  
   const [harga, setHarga] = useState(0),
        [DP, setDP] = useState(0),
        [tahun, setTahun] = useState(0),
@@ -8,8 +9,6 @@ const SimulationCard = () => {
        [bulan, setBulan] = useState(0),
        [angsur, setAngsur] = useState(0),
        [total, setTotal] = useState(0);
-
-  
 
   const hitungDP = (val) => {
     setDP(harga*val/100);
@@ -29,7 +28,29 @@ const SimulationCard = () => {
   useEffect(() => {
     setTotal(angsur*bulan);
   }, [angsur])
-  
+
+  let Format = new Intl.NumberFormat();
+  let id = new Intl.NumberFormat("id-ID", {
+    style: 'currency',
+    currency: 'IDR',
+  })
+
+  function formatHarga(e){
+    let x = e.target.value;
+    let n = x.replace(/\,/g, '')
+    n = n.replace(/[^0-9]+/g,"")
+    setHarga(parseFloat(n))
+    e.target.value = Format.format(n)
+  }
+
+  function formatDP(e){
+    let x = e.target.value;
+    let n = x.replace(/\,/g, '')
+    n = n.replace(/[^0-9]+/g,"")
+    setDP(parseFloat(n))
+    e.target.value = Format.format(n)
+  }
+
   return (
     <>
     <div className="bg-gray-50 min-h-screen p-4">
@@ -42,10 +63,12 @@ const SimulationCard = () => {
         <div className="card  mt-2 md:mr-2 max-w-sm">
           <div className="form-container ">
             <div className="form-input">
-              <label htmlFor="harga">Harga Properti</label>
+              <label htmlFor="harga">Harga rumah</label>
               <div className="input-container">
-                <div className="format-input">Rp</div>
-                <input onChange={(e) => {setHarga(e.target.value)}} type="number" name="" id="harga" />
+              <div className="format-input">Rp</div>
+                <input type="text" placeholder="Enter text" onChange={(e) => {
+                  formatHarga(e)
+                }} />
               </div>
             </div>
             <div className="form-input">
@@ -54,7 +77,7 @@ const SimulationCard = () => {
                 <div className="format-input">%</div>
                 <input onChange={(e) => {hitungDP(e.target.value)}} type="number" name="" id="dppersen" />
                 <div className="format-input">Rp</div>
-                <input onChange={(e) => {setDP(e.target.value)}} type="number" name="" id="dp" value={DP} />
+                <input onChange={(e) => {formatDP(e)}} type="text" name="" id="dp" value={Format.format(DP) == "NaN" ? 0 : Format.format(DP)} />
               </div>
             </div>
             <div className="form-input">
@@ -80,34 +103,34 @@ const SimulationCard = () => {
           <div className="result-container">
             <div className="text-center text-lg p-2 rounded-md bg-green-100 my-2">
               Angsuran per bulan:<br></br>
-              <span className="text-primary text-2xl font-bold">Rp {angsur}</span>
+              <span className="text-primary text-2xl font-bold">{id.format(angsur) == "RpNaN"? "Rp 0":id.format(angsur) }</span>
             </div>
             <h2 className="font-bold my-3 border-b-2 border-gray-200">Pembayaran Pertama</h2>
             <div className="data">
               <p className="detail">Uang Muka</p>
-              <p className="value">Rp {DP}</p>
+              <p className="value">{id.format(DP) == "RpNaN"? "Rp 0":id.format(DP) }</p>
             </div>
             <div className="data">
               <p className="detail">Angsuran Pertama</p>
-              <p className="value">Rp {angsur}</p>
+              <p className="value">{id.format(angsur) == "RpNaN"? "Rp 0":id.format(angsur)}</p>
             </div>
             <h2 className="font-bold my-3 border-b-2 border-gray-200">Detail Pinjaman</h2>
             <div className="data">
               <p className="detail">Pinjaman pokok</p>
-              <p className="value">Rp {harga-DP}</p>
+              <p className="value">{id.format(harga-DP) == "RpNaN"? "Rp 0":id.format(harga-DP)}</p>
             </div>
             <div className="data">
               <p className="detail">Total margin pinjaman</p>
-              <p className="value">Rp {total}</p>
+              <p className="value">{id.format(total) == "RpNaN"? "Rp 0":id.format(total)}</p>
             </div>
             <h2 className="font-bold my-3 border-b-2 border-gray-200">Ketentuan Penghasilan Minimal</h2>
             <div className="data">
               <p className="detail">Angsuran 30% penghasilan</p>
-              <p className="value">Rp {parseInt(angsur*3 + (angsur / 3))}</p>
+              <p className="value">{id.format(parseInt(angsur*3 + (angsur / 3))) == "RpNaN"? "Rp 0":id.format(parseInt(angsur*3 + (angsur / 3)))}</p>
             </div>
             <div className="data">
               <p className="detail">Angsuran 40% penghasilan</p>
-              <p className="value">Rp {parseInt(angsur*2 + (angsur / 2))}</p>
+              <p className="value">{id.format(parseInt(angsur*2 + (angsur / 2))) == "RpNaN"? "Rp 0":id.format(parseInt(angsur*2 + (angsur / 2)))}</p>
             </div>
           </div>
         </div>
